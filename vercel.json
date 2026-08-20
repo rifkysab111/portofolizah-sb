@@ -5,6 +5,10 @@
       "use": "@vercel/static"
     },
     {
+      "src": "admin/**",
+      "use": "@vercel/static"
+    },
+    {
       "src": "*.php",
       "use": "vercel-php@0.6.2"
     },
