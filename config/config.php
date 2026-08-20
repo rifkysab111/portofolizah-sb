@@ -5,12 +5,13 @@
 | SETUP KONEKSI DATABASE (SUPABASE POSTGRESQL + VERCEL)
 |--------------------------------------------------------------------------
 */
-$databaseUrl = getenv('DATABASE_URL');
+// Gunakan $_ENV sebagai tambahan karena beberapa serverless PHP tidak membaca getenv()
+$databaseUrl = $_ENV['DATABASE_URL'] ?? getenv('DATABASE_URL');
 
-// Jika tidak di Vercel (berarti di XAMPP lokal), gunakan URL manual ini:
 if (!$databaseUrl) {
-    // ⚠️ PENTING 1: Ganti [PASSWORD-KAMU] dengan password database Supabase Anda (hilangkan tanda kurung siku)
-    $databaseUrl = "postgresql://postgres:halizah011104@db.ddutuofcjkxzwnafycpi.supabase.co:5432/postgres";
+    // ⚠️ PENTING: Paste URL Connection Pooler Anda di sini!
+    // Contoh bentuknya: postgresql://postgres:[PASSWORD-KAMU]@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres
+    $databaseUrl = "postgresql://postgres.ddutuofcjkxzwnafycpi:halizah011104@aws-0-ap-northeast-1.pooler.supabase.com:6543/postgres";
 }
 
 $db_url = parse_url($databaseUrl);
