@@ -44,6 +44,10 @@ try {
 |--------------------------------------------------------------------------
 */
 if (session_status() === PHP_SESSION_NONE) {
+    // Pastikan session menggunakan direktori temporary Vercel
+    if (is_writable('/tmp')) {
+        session_save_path('/tmp');
+    }
     session_start();
 }
 
@@ -84,7 +88,7 @@ function is_admin(): bool
 function require_admin(): void
 {
     if (!is_admin()) {
-        header('Location: login.php');
+        header('Location: /admin/login.php');
         exit;
     }
 }
