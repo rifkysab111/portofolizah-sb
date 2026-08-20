@@ -75,7 +75,7 @@ function e(string $value): string
 function is_admin(): bool
 {
     return isset(
-        $_SESSION['admin_id']
+        $_SESSION['admin_id']) && !empty($_SESSION['admin_id']
     );
 }
 
@@ -88,7 +88,7 @@ function is_admin(): bool
 function require_admin(): void
 {
     if (!is_admin()) {
-        header('Location: /admin/login.php');
+        header('Location: /admin/index.php');
         exit;
     }
 }
