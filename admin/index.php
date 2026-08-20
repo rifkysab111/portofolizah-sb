@@ -2,7 +2,7 @@
 
 require __DIR__ . '/../config/config.php';
 
-require_admin();
+//require_admin();
 
 $success = '';
 $error = '';
