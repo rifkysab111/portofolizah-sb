@@ -84,7 +84,7 @@ if (
 
     <link
         rel="stylesheet"
-        href="admin.css"
+        href="/admin/admin.css"
     >
 
     <link
