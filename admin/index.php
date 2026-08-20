@@ -79,13 +79,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare(
                     'UPDATE profiles
                      SET
-                        name = ?,
-                        subtitle = ?,
-                        bio = ?,
-                        email = ?,
-                        instagram = ?,
-                        whatsapp = ?,
-                        hero_image = ?
+                         name = ?,
+                         subtitle = ?,
+                         bio = ?,
+                         email = ?,
+                         instagram = ?,
+                         whatsapp = ?,
+                         hero_image = ?
                      WHERE id = 1'
                 );
 
@@ -118,12 +118,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare(
                     'UPDATE profiles
                      SET
-                        name = ?,
-                        subtitle = ?,
-                        bio = ?,
-                        email = ?,
-                        instagram = ?,
-                        whatsapp = ?
+                         name = ?,
+                         subtitle = ?,
+                         bio = ?,
+                         email = ?,
+                         instagram = ?,
+                         whatsapp = ?
                      WHERE id = 1'
                 );
 
@@ -237,9 +237,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare(
                     'UPDATE portfolios
                      SET
-                        title = ?,
-                        description = ?,
-                        image = ?
+                         title = ?,
+                         description = ?,
+                         image = ?
                      WHERE id = ?'
                 );
 
@@ -269,8 +269,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare(
                     'UPDATE portfolios
                      SET
-                        title = ?,
-                        description = ?
+                         title = ?,
+                         description = ?
                      WHERE id = ?'
                 );
 
@@ -358,6 +358,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $confirmPassword =
                 $_POST['confirm_password'] ?? '';
 
+            // Pengaman session admin_id (fallback ke 1 jika belum login session)
+            $adminId = $_SESSION['admin_id'] ?? 1;
+
 
             /*
             | Username tidak boleh kosong.
@@ -384,7 +387,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $stmt->execute([
                 $username,
-                $_SESSION['admin_id']
+                $adminId
             ]);
 
             if ($stmt->fetch()) {
@@ -445,15 +448,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $stmt = $pdo->prepare(
                     'UPDATE admins
                      SET
-                        username = ?,
-                        password = ?
+                         username = ?,
+                         password = ?
                      WHERE id = ?'
                 );
 
                 $stmt->execute([
                     $username,
                     $hash,
-                    $_SESSION['admin_id']
+                    $adminId
                 ]);
 
             } else {
@@ -473,7 +476,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $stmt->execute([
                     $username,
-                    $_SESSION['admin_id']
+                    $adminId
                 ]);
             }
 
@@ -1344,19 +1347,19 @@ $currentUsername =
 
 
         <h2>
-            Supaya visual tetap aesthetic
+            Biar keliatan tetep aesthetic
         </h2>
 
 
         <p class="muted">
 
-            Gunakan foto portrait 4:5
+            Pake foto portrait 4:5
             atau sekitar 1080 × 1350 px.
 
-            Pilih foto dengan pencahayaan
-            lembut, latar bersih, dan warna
-            yang sejalan dengan nuansa
-            pink/cream website.
+            Pilih foto yang cakep pencahayaan
+            soft, clean, dan kalo bisa
+            yang sejalan sama nuansa
+            pink/cream website ya cess..
 
         </p>
 
